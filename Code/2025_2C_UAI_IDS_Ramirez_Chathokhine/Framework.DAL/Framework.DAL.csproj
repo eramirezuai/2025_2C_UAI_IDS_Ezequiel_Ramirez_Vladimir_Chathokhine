@@ -43,6 +43,14 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Access.cs" />
+    <Compile Include="EntityCrud.cs" />
+    <Compile Include="IAccess.cs" />
+    <Compile Include="ICreator.cs" />
+    <Compile Include="ICrud.cs" />
+    <Compile Include="IDeleter.cs" />
+    <Compile Include="IParameterMapper.cs" />
+    <Compile Include="IRetriever.cs" />
+    <Compile Include="IUpdater.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

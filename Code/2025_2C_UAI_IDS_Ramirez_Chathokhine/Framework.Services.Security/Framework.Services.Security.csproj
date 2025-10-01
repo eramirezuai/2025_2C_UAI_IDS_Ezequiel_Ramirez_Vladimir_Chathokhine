@@ -39,6 +39,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Credentials\SinglePatent.cs" />
     <Compile Include="Encryption\DES3DESEncrypter.cs" />
     <Compile Include="Encryption\EncryptedString.cs" />
     <Compile Include="Encryption\HashedString.cs" />
@@ -46,17 +47,15 @@
     <Compile Include="Encryption\IHasher.cs" />
     <Compile Include="Encryption\SHA256Hasher.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Session\Data\FamiliaCABM.cs" />
-    <Compile Include="Session\Data\PatenteCABM.cs" />
-    <Compile Include="Session\Data\UsuarioCABM.cs" />
-    <Compile Include="Session\Data\UsuarioCABM.full.cs" />
-    <Compile Include="Session\Family.cs" />
-    <Compile Include="Session\GestorSesion.cs" />
-    <Compile Include="Session\Patente.cs" />
-    <Compile Include="Session\PatenteSimple.cs" />
-    <Compile Include="Session\Sesion.cs" />
-    <Compile Include="Session\SesionFactoryLoader.cs" />
-    <Compile Include="Session\Usuario.cs" />
+    <Compile Include="Credentials\Data\FamilyCrud.cs" />
+    <Compile Include="Credentials\Data\PatentCrud.cs" />
+    <Compile Include="Credentials\Data\UserCrud.cs" />
+    <Compile Include="Credentials\Data\UserParameterMapper.cs" />
+    <Compile Include="Credentials\Family.cs" />
+    <Compile Include="Credentials\IUser.cs" />
+    <Compile Include="Credentials\IPatent.cs" />
+    <Compile Include="Credentials\Patent.cs" />
+    <Compile Include="Credentials\User.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Framework.DAL\Framework.DAL.csproj">
