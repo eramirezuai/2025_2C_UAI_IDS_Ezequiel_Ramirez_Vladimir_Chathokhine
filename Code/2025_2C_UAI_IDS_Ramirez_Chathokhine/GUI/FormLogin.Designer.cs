@@ -77,17 +77,18 @@
             this.lbl_Password.TabIndex = 4;
             this.lbl_Password.Text = "Password";
             // 
-            // Form1
+            // FormLogin
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.SystemColors.ControlDarkDark;
             this.ClientSize = new System.Drawing.Size(1214, 718);
             this.Controls.Add(this.lbl_Password);
             this.Controls.Add(this.lbl_user);
             this.Controls.Add(this.txt_password);
             this.Controls.Add(this.txt_user);
             this.Controls.Add(this.btn_login);
-            this.Name = "Form1";
+            this.Name = "FormLogin";
             this.Text = "Form1";
             this.ResumeLayout(false);
             this.PerformLayout();
