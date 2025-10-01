@@ -406,3 +406,21 @@ BEGIN
     WHERE audit_id = @audit_id;
 END
 GO
+
+
+
+CREATE PROCEDURE [dbo].sp_user_select_by_credentials
+@NAME VARCHAR(100),
+@PASSWORD CHAR(64)
+AS
+BEGIN
+	SELECT * FROM USER
+	WHERE NAME = @NAME AND PASSWORD = @PASSWORD
+END
+
+
+
+
+
+
+ 
