@@ -9,19 +9,9 @@ using System.Configuration;
 
 namespace Framework.DAL
 {
-    public class Access
+    public class Access : IAccess
     {
         SqlConnection connection;
-
-        public interface IAccess
-        {
-            void Open();
-            void Close();
-            SqlParameter CreateParameter(string name, object value);
-            int Write(string name, IEnumerable<SqlParameter> parameters = null);
-            DataTable Read(string name, IEnumerable<SqlParameter> parameters = null);
-        }
-
 
         public void Open()
         {
@@ -51,16 +41,14 @@ namespace Framework.DAL
         }
 
 
-        private SqlCommand CreateCommand(string name, List<SqlParameter> parameters = null)
+        private SqlCommand CreateCommand(string name, IEnumerable<SqlParameter> parameters = null)
         {
             SqlCommand cmd = new SqlCommand();
             cmd.CommandText = name;
             cmd.CommandType = CommandType.StoredProcedure;
             cmd.Connection = connection;
 
-
-
-            if (parameters != null && parameters.Count > 0)
+            if (parameters != null && parameters.Any())
             {
                 cmd.Parameters.AddRange(parameters.ToArray());
             }
@@ -68,7 +56,7 @@ namespace Framework.DAL
             return cmd;
         }
 
-        public int Escribir(string name, List<SqlParameter> parameters = null)
+        public int Write(string name, IEnumerable<SqlParameter> parameters = null)
         {
             int filasafectadas = 0;
             Open();
@@ -99,7 +87,22 @@ namespace Framework.DAL
 
 
 
-
+        public SqlParameter CreateParameter(string name, object value)
+        {
+            if (value is string)
+            {
+                return CreateParameter(name, (string)value);
+            }
+            else if (value is int)
+            {
+                return CreateParameter(name, (int)value);
+            }
+            else if (value is decimal)
+            {
+                return CreateParameter(name, (decimal)value);
+            }
+            else { throw new NotSupportedException("Data type not implemented in Access"); }
+        }
 
 
         public SqlParameter CreateParameter(string name, string value)
@@ -123,7 +126,7 @@ namespace Framework.DAL
             return parameter;
         }
 
-        public DataTable Leer(string name, List<SqlParameter> parameters = null)
+        public DataTable Read(string name, IEnumerable<SqlParameter> parameters = null)
         {
             DataTable table = new DataTable();
             Open();
@@ -148,5 +151,7 @@ namespace Framework.DAL
             Close();
             return table;
         }
+
+
     }
 }
