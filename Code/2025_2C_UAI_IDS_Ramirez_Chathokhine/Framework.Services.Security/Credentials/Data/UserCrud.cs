@@ -49,7 +49,7 @@ namespace Framework.Services.Security.Credentials
             base.Update(data, UserParameterMappings.Update, "sp_user_update");
         }
 
-        User RetrieveByCredentials(string user, string password)
+        public User RetrieveByCredentials(string user, string password)
         {
             return base.Retrieve(UserParameterMappings.RetrieveByCredentials, "sp_user_select_by_credentials").FirstOrDefault();
         }

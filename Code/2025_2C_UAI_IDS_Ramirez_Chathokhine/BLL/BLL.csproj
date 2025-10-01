@@ -44,5 +44,18 @@
     <Compile Include="UserBLL.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Framework.DAL\Framework.DAL.csproj">
+      <Project>{2d6ce7a8-fbf5-415d-a218-61ed0ee3f282}</Project>
+      <Name>Framework.DAL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Framework.Services.Security\Framework.Services.Security.csproj">
+      <Project>{23201b2b-011f-490d-9c87-260ef39e9540}</Project>
+      <Name>Framework.Services.Security</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Connected Services\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
