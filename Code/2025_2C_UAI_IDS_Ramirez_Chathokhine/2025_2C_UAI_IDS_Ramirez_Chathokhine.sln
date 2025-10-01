@@ -13,6 +13,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Framework", "Framework", "{
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Framework.DAL", "Framework.DAL\Framework.DAL.csproj", "{2D6CE7A8-FBF5-415D-A218-61ED0EE3F282}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Framework.Services.Security", "Framework.Services.Security\Framework.Services.Security.csproj", "{23201B2B-011F-490D-9C87-260EF39E9540}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -31,6 +33,10 @@ Global
 		{2D6CE7A8-FBF5-415D-A218-61ED0EE3F282}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2D6CE7A8-FBF5-415D-A218-61ED0EE3F282}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2D6CE7A8-FBF5-415D-A218-61ED0EE3F282}.Release|Any CPU.Build.0 = Release|Any CPU
+		{23201B2B-011F-490D-9C87-260EF39E9540}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{23201B2B-011F-490D-9C87-260EF39E9540}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{23201B2B-011F-490D-9C87-260EF39E9540}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{23201B2B-011F-490D-9C87-260EF39E9540}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -39,6 +45,7 @@ Global
 		{3D101808-980A-423A-B876-794381EE2B23} = {5A3C185E-80CC-417D-A3B4-80A7BE9BED07}
 		{AADD28CC-81FC-407B-A7CD-22FD8C3F2F61} = {5A3C185E-80CC-417D-A3B4-80A7BE9BED07}
 		{2D6CE7A8-FBF5-415D-A218-61ED0EE3F282} = {98F94CC1-24D2-4054-B1D1-1DA4BA16C56C}
+		{23201B2B-011F-490D-9C87-260EF39E9540} = {98F94CC1-24D2-4054-B1D1-1DA4BA16C56C}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {DAF937E4-6155-4AA0-BB29-BEE0609FB005}

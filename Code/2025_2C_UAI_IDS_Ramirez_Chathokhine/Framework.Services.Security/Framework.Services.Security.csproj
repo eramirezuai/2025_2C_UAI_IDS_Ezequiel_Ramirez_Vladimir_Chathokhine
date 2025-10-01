@@ -1,0 +1,69 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{23201B2B-011F-490D-9C87-260EF39E9540}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Framework.Services.Security</RootNamespace>
+    <AssemblyName>Framework.Services.Security</AssemblyName>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <Deterministic>true</Deterministic>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Encryption\DES3DESEncrypter.cs" />
+    <Compile Include="Encryption\EncryptedString.cs" />
+    <Compile Include="Encryption\HashedString.cs" />
+    <Compile Include="Encryption\IEncrypter.cs" />
+    <Compile Include="Encryption\IHasher.cs" />
+    <Compile Include="Encryption\SHA256Hasher.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Session\Data\FamiliaCABM.cs" />
+    <Compile Include="Session\Data\PatenteCABM.cs" />
+    <Compile Include="Session\Data\UsuarioCABM.cs" />
+    <Compile Include="Session\Data\UsuarioCABM.full.cs" />
+    <Compile Include="Session\Family.cs" />
+    <Compile Include="Session\GestorSesion.cs" />
+    <Compile Include="Session\Patente.cs" />
+    <Compile Include="Session\PatenteSimple.cs" />
+    <Compile Include="Session\Sesion.cs" />
+    <Compile Include="Session\SesionFactoryLoader.cs" />
+    <Compile Include="Session\Usuario.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Framework.DAL\Framework.DAL.csproj">
+      <Project>{2d6ce7a8-fbf5-415d-a218-61ed0ee3f282}</Project>
+      <Name>Framework.DAL</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>
