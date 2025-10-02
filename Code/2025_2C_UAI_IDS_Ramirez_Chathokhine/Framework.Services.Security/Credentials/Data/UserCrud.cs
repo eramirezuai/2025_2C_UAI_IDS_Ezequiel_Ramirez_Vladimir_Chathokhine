@@ -51,7 +51,12 @@ namespace Framework.Services.Security.Credentials
 
         public User RetrieveByCredentials(string user, string password)
         {
-            return base.Retrieve(UserParameterMappings.RetrieveByCredentials, "sp_user_select_by_credentials").FirstOrDefault();
+            var parameters = new Dictionary<string, object>()
+            {
+                {"@name",user},
+                {"@password",password}
+            };
+            return base.Retrieve(parameters, UserParameterMappings.RetrieveByCredentials, "sp_user_select_by_credentials").FirstOrDefault();
         }
     }
 }

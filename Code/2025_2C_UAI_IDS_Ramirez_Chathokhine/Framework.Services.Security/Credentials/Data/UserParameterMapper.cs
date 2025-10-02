@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 namespace Framework.Services.Security.Credentials
 {
-    public class UserParameterMapper : IToParameterMapper<User, UserParameterMappings>, IToEntityMapper<User, UserParameterMappings>
+    public class UserParameterMapper : IParameterMapper<User, UserParameterMappings>
     {
         public User MapToEntity(Dictionary<string, object> data, UserParameterMappings type)
         {

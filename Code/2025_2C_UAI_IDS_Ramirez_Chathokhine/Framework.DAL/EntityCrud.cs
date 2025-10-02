@@ -31,7 +31,6 @@ namespace Framework.DAL
             {
                 var parameters = toParameterMapper.MapToParameters(data, type);
                 var sqlParameters = new List<SqlParameter>();
-                access.Open();
                 foreach (var param in parameters)
                 {
                     sqlParameters.Add(access.CreateParameter(param.Key, param.Value));
@@ -40,7 +39,6 @@ namespace Framework.DAL
             }
             finally
             {
-                access.Close();
             }
         }
 
@@ -54,13 +52,12 @@ namespace Framework.DAL
             }
             try
             {
-                access.Open();
                 var table = access.Read(retrieveSpName);
                 return ParametersFromDataTable(table).Select(p => toEntityMapper.MapToEntity(p, type));
             }
             finally
             {
-                access.Close();
+
             }
         }
 
@@ -75,17 +72,15 @@ namespace Framework.DAL
             try
             {
                 var sqlParameters = new List<SqlParameter>();
-                access.Open();
                 foreach(var arg in args)
                 {
                     sqlParameters.Add(access.CreateParameter(arg.Key, arg.Value));
                 }
-                var table = access.Read(retrieveSpName);
+                var table = access.Read(retrieveSpName,sqlParameters);
                 return ParametersFromDataTable(table).Select(p => toEntityMapper.MapToEntity(p, type));
             }
             finally
             {
-                access.Close();
             }
         }
 
@@ -101,7 +96,6 @@ namespace Framework.DAL
             {
                 var parameters = toParameterMapper.MapToParameters(data, type);
                 var sqlParameters = new List<SqlParameter>();
-                access.Open();
                 foreach (var param in parameters)
                 {
                     sqlParameters.Add(access.CreateParameter(param.Key, param.Value));
@@ -110,7 +104,6 @@ namespace Framework.DAL
             }
             finally
             {
-                access.Close();
             }
         }
 
@@ -126,7 +119,6 @@ namespace Framework.DAL
             {
                 var parameters = toParameterMapper.MapToParameters(data, type);
                 var sqlParameters = new List<SqlParameter>();
-                access.Open();
                 foreach (var param in parameters)
                 {
                     sqlParameters.Add(access.CreateParameter(param.Key, param.Value));
@@ -135,7 +127,6 @@ namespace Framework.DAL
             }
             finally
             {
-                access.Close();
             }
         }
 
@@ -151,7 +142,6 @@ namespace Framework.DAL
             {
                 var parameters = toParameterMapper.MapToParameters(data, type);
                 var sqlParameters = new List<SqlParameter>();
-                access.Open();
                 foreach (var param in parameters)
                 {
                     sqlParameters.Add(access.CreateParameter(param.Key, param.Value));
@@ -164,7 +154,6 @@ namespace Framework.DAL
             }
             finally
             {
-                access.Close();
             }
         }
 

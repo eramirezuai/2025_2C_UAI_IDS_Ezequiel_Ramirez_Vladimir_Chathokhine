@@ -1,8 +1,10 @@
-﻿using System;
+﻿using BLL;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Drawing.Text;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -12,14 +14,31 @@ namespace GUI
 {
     public partial class FormLogin : Form
     {
+        private UserBLL userBLL;
         public FormLogin()
         {
             InitializeComponent();
+            userBLL = new UserBLL();
         }
 
         private void btn_login_Click(object sender, EventArgs e)
         {
+            try
+            {
+                var user = userBLL.LoginWithCredentials(txt_user.Text, txt_password.Text);
+                MessageBox.Show("User " + user.Name + "logged in");
+            }
+            catch (Exception ex)
+            {
 
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        private void FormLogin_Load(object sender, EventArgs e)
+        {
+
+            
         }
     }
 }

@@ -79,5 +79,15 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\BLL\BLL.csproj">
+      <Project>{aadd28cc-81fc-407b-a7cd-22fd8c3f2f61}</Project>
+      <Name>BLL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Framework.Services.Security\Framework.Services.Security.csproj">
+      <Project>{23201b2b-011f-490d-9c87-260ef39e9540}</Project>
+      <Name>Framework.Services.Security</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
