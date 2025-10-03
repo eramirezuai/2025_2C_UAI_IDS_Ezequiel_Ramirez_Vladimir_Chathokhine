@@ -1,4 +1,6 @@
-﻿namespace Framework.Services.Security.Credentials
+﻿using Framework.Services.Security.Encryption;
+
+namespace Framework.Services.Security.Credentials
 {
     public class User : IUser
     {
@@ -12,6 +14,16 @@
 
         public User()
         {
+        }
+
+        public static User FromPlainText(string name, string password)
+        {
+            var ret = new User()
+            {
+                Name = name,
+                Password = new HashedString(password).HashedValue
+            };
+            return ret;
         }
 
         public override int GetHashCode()

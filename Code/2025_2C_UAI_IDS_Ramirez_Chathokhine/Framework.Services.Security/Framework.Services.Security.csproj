@@ -39,6 +39,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Credentials\IUserRetrieverByCredentials.cs" />
     <Compile Include="Credentials\SinglePatent.cs" />
     <Compile Include="Encryption\DES3DESEncrypter.cs" />
     <Compile Include="Encryption\EncryptedString.cs" />

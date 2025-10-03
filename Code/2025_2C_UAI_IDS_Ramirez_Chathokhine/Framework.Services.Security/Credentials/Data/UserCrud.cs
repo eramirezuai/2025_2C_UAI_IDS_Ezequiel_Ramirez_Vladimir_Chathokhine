@@ -13,7 +13,7 @@ namespace Framework.Services.Security.Credentials
         Delete
     }
 
-    public class UserCrud : EntityCrud<User, UserParameterMappings>
+    public class UserCrud : EntityCrud<User, UserParameterMappings>, IUserRetrieverByCredentials
     {
         public UserCrud(IAccess access, IParameterMapper<User, UserParameterMappings> parameterMapper) : base(access, parameterMapper, parameterMapper)
         {
@@ -49,6 +49,11 @@ namespace Framework.Services.Security.Credentials
             base.Update(data, UserParameterMappings.Update, "sp_user_update");
         }
 
+        public User RetrieveByCredentials(User user)
+        {
+            return RetrieveByCredentials(user.Name, user.Password);
+        }
+
         public User RetrieveByCredentials(string user, string password)
         {
             var parameters = new Dictionary<string, object>()
@@ -57,6 +62,11 @@ namespace Framework.Services.Security.Credentials
                 {"@password",password}
             };
             return base.Retrieve(parameters, UserParameterMappings.RetrieveByCredentials, "sp_user_select_by_credentials").FirstOrDefault();
+        }
+
+        IUser IUserRetrieverByCredentials.RetrieveByCredentials(string user, string password)
+        {
+            return RetrieveByCredentials(user, password);
         }
     }
 }

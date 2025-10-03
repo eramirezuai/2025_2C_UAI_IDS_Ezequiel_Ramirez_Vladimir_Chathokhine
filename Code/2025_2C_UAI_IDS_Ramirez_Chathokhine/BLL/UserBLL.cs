@@ -10,24 +10,24 @@ namespace BLL
 {
     public class UserBLL
     {
-        
-       private UserCrud userCrud;
+        private UserCrud userCrud;
+
         public UserBLL() 
         {
-        userCrud = new UserCrud(new Access(),new UserParameterMapper());
+            userCrud = new UserCrud(new Access(), new UserParameterMapper());
         }
 
         public User LoginWithCredentials(string username, string password)
         {
 
-            User user = new User();
-            user=userCrud.RetrieveByCredentials(username, password);
+            User user = User.FromPlainText(username, password);
+            user = userCrud.RetrieveByCredentials(user);
             if (user == null) 
             {
                 throw new Exception("User or password is not valid");
             }
             
-              return user;
+            return user;
         }
     }
 }
