@@ -4,7 +4,7 @@ namespace Framework.Services.Security.Encryption
 {
     public class HashedString
     {
-        private string valorHasheado;
+        private string hashedValue;
         private IHasher hasher;
 
         public HashedString(string password) : this(password, new SHA256Hasher())
@@ -14,31 +14,31 @@ namespace Framework.Services.Security.Encryption
         public HashedString(string password, IHasher hasher)
         {
             this.hasher = hasher;
-            this.valorHasheado = hasher.Hash(password);
+            this.hashedValue = hasher.Hash(password);
         }
 
-        public string ValorHasheado
+        public string HashedValue
         {
-            get { return valorHasheado; }
+            get { return hashedValue; }
         }
 
         public override string ToString()
         {
-            return ValorHasheado;
+            return HashedValue;
         }
 
         public override bool Equals(object obj)
         {
             if (obj is HashedString)
-                return this.ValorHasheado.Equals(((HashedString)obj).ValorHasheado);
+                return this.HashedValue.Equals(((HashedString)obj).HashedValue);
             else if (obj is String)
-                return this.ValorHasheado.Equals(hasher.Hash((string)obj));
+                return this.HashedValue.Equals(hasher.Hash((string)obj));
             else return this.Equals(obj);
         }
 
         public override int GetHashCode()
         {
-            return valorHasheado.GetHashCode();
+            return hashedValue.GetHashCode();
         }
 
         public static bool operator ==(HashedString hash, string valor)
