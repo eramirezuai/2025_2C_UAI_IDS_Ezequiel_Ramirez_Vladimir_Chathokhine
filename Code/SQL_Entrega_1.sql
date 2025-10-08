@@ -194,7 +194,7 @@ GO
 
 --********************************************************procedures
 
-CREATE PROCEDURE [dbo].[sp_user_family_insert]
+CREATE PROCEDURE [dbo].[user_family_insert]
     @user_id   BIGINT,
     @family_id BIGINT
 AS
@@ -207,7 +207,7 @@ END
 GO
 
 
-CREATE PROCEDURE [dbo].[sp_user_family_delete]
+CREATE PROCEDURE [dbo].[user_family_delete]
     @user_id   BIGINT,
     @family_id BIGINT
 AS
@@ -222,7 +222,7 @@ GO
 
 
 
-CREATE PROCEDURE [dbo].[sp_user_insert]
+CREATE PROCEDURE [dbo].[user_insert]
     @name NVARCHAR(100),
     @password CHAR(64)
 AS
@@ -239,7 +239,7 @@ GO
 
 
 
-CREATE PROCEDURE [dbo].[sp_user_delete]
+CREATE PROCEDURE [dbo].[user_delete]
     @id BIGINT
 AS
 BEGIN
@@ -252,7 +252,7 @@ GO
 
 
 
-CREATE PROCEDURE [dbo].[sp_vvd_insert]
+CREATE PROCEDURE [dbo].[vvd_insert]
     @table_name NVARCHAR(50),
     @digit CHAR(64)
 AS
@@ -266,7 +266,7 @@ GO
 
 
 
-CREATE PROCEDURE [dbo].[sp_vvd_delete]
+CREATE PROCEDURE [dbo].[vvd_delete]
     @table_name NVARCHAR(50)
 AS
 BEGIN
@@ -278,7 +278,7 @@ END
 GO
 
 
-CREATE PROCEDURE [dbo].[sp_patent_insert]
+CREATE PROCEDURE [dbo].[patent_insert]
     @code VARCHAR(100),
     @description NVARCHAR(500)
 AS
@@ -295,7 +295,7 @@ GO
 
 
 
-CREATE PROCEDURE [dbo].[sp_patent_delete]
+CREATE PROCEDURE [dbo].[patent_delete]
     @id BIGINT
 AS
 BEGIN
@@ -307,7 +307,7 @@ END
 GO
 
 
-CREATE PROCEDURE [dbo].[sp_family_patent_insert]
+CREATE PROCEDURE [dbo].[family_patent_insert]
     @family_id BIGINT,
     @patent_id BIGINT
 AS
@@ -320,7 +320,7 @@ END
 GO
 
 
-CREATE PROCEDURE [dbo].[sp_family_patent_delete]
+CREATE PROCEDURE [dbo].[family_patent_delete]
     @family_id BIGINT,
     @patent_id BIGINT
 AS
@@ -334,7 +334,7 @@ END
 GO
 
 
-CREATE PROCEDURE [dbo].[sp_family_insert]
+CREATE PROCEDURE [dbo].[family_insert]
     @code VARCHAR(100),
     @description NVARCHAR(500)
 AS
@@ -350,7 +350,7 @@ END
 GO
 
 
-CREATE PROCEDURE [dbo].[sp_family_delete]
+CREATE PROCEDURE [dbo].[family_delete]
     @id BIGINT
 AS
 BEGIN
@@ -362,7 +362,7 @@ END
 GO
 
 
-CREATE PROCEDURE [dbo].[sp_audit_insert]
+CREATE PROCEDURE [dbo].[audit_insert]
     @previous_audit_id BIGINT = NULL,
     @next_audit_id     BIGINT = NULL,
     @entity_table      NVARCHAR(50),
@@ -396,7 +396,7 @@ END
 GO
 
 
-CREATE PROCEDURE [dbo].[sp_audit_delete]
+CREATE PROCEDURE [dbo].[audit_delete]
     @audit_id BIGINT
 AS
 BEGIN
@@ -409,7 +409,7 @@ GO
 
 
 
-CREATE PROCEDURE [dbo].sp_user_select_by_credentials
+CREATE PROCEDURE [dbo].user_select_by_credentials
 @NAME VARCHAR(100),
 @PASSWORD CHAR(64)
 AS
@@ -420,22 +420,12 @@ END
 GO
 
 
-CREATE PROCEDURE [DBO].SP_USER_SELECT_ALL
+CREATE PROCEDURE [DBO].USER_SELECT_ALL
 AS
 BEGIN
 	SELECT * FROM [USER]
 END
 
 
---insert into [user]
---values ('admin01','admin01')
-
-
---exec sp_user_select_by_credentials 'vladimir','uai01'
-
---select * from [user]
-
-
---[sp_user_insert]
 
  
