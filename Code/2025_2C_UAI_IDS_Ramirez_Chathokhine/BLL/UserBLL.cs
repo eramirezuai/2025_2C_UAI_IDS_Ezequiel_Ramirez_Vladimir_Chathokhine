@@ -29,6 +29,25 @@ namespace BLL
             
             return user;
         }
+
+        public User CreateUser(string username, string password) 
+        {
+            try
+            {
+                User user = new User();
+                user.Name = username;
+                user.Password = password;
+                userCrud.Create(user);
+
+                return user;
+            }
+            catch (Exception ex)
+            {
+
+                throw;
+            }
+
+        }
     }
 }
 

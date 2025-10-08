@@ -33,6 +33,7 @@
             this.txt_password = new System.Windows.Forms.TextBox();
             this.lbl_user = new System.Windows.Forms.Label();
             this.lbl_Password = new System.Windows.Forms.Label();
+            this.btnExit = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // btn_login
@@ -77,19 +78,30 @@
             this.lbl_Password.TabIndex = 4;
             this.lbl_Password.Text = "Password";
             // 
+            // btnExit
+            // 
+            this.btnExit.Location = new System.Drawing.Point(1051, 563);
+            this.btnExit.Name = "btnExit";
+            this.btnExit.Size = new System.Drawing.Size(93, 50);
+            this.btnExit.TabIndex = 5;
+            this.btnExit.Text = "Exit";
+            this.btnExit.UseVisualStyleBackColor = true;
+            this.btnExit.Click += new System.EventHandler(this.btnExit_Click);
+            // 
             // FormLogin
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.ClientSize = new System.Drawing.Size(1214, 718);
+            this.ClientSize = new System.Drawing.Size(1166, 634);
+            this.Controls.Add(this.btnExit);
             this.Controls.Add(this.lbl_Password);
             this.Controls.Add(this.lbl_user);
             this.Controls.Add(this.txt_password);
             this.Controls.Add(this.txt_user);
             this.Controls.Add(this.btn_login);
             this.Name = "FormLogin";
-            this.Text = "Form1";
+            this.Text = "Login";
             this.Load += new System.EventHandler(this.FormLogin_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -103,6 +115,7 @@
         private System.Windows.Forms.TextBox txt_password;
         private System.Windows.Forms.Label lbl_user;
         private System.Windows.Forms.Label lbl_Password;
+        private System.Windows.Forms.Button btnExit;
     }
 }
 

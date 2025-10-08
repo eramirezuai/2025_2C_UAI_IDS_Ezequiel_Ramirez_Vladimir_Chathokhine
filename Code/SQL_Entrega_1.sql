@@ -414,13 +414,28 @@ CREATE PROCEDURE [dbo].sp_user_select_by_credentials
 @PASSWORD CHAR(64)
 AS
 BEGIN
-	SELECT * FROM USER
+	SELECT * FROM [USER]
 	WHERE NAME = @NAME AND PASSWORD = @PASSWORD
+END
+GO
+
+
+CREATE PROCEDURE [DBO].SP_USER_SELECT_ALL
+AS
+BEGIN
+	SELECT * FROM [USER]
 END
 
 
+--insert into [user]
+--values ('admin01','admin01')
 
 
+--exec sp_user_select_by_credentials 'vladimir','uai01'
 
+--select * from [user]
+
+
+--[sp_user_insert]
 
  
