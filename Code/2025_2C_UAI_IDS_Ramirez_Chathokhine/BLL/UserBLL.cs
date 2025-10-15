@@ -1,33 +1,51 @@
-﻿using Framework.DAL;
+﻿using BLL;
+using Framework.DAL;
+using Framework.Services.Security;
 using Framework.Services.Security.Credentials;
+using Framework.Services.Security.Encryption;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace BLL
 {
     public class UserBLL
     {
         private UserCrud userCrud;
+        private int badLoginCount;
+        private int badLoginThreshold;
 
         public UserBLL() 
         {
             userCrud = new UserCrud(new Access(), new UserParameterMapper());
+            badLoginCount = 0;
+            // TODO: make it configurable
+            badLoginThreshold = 3;
         }
 
-        public User LoginWithCredentials(string username, string password)
+        public IUser LoginWithCredentials(string username, string password)
         {
-
-            User user = User.FromPlainText(username, password);
-            user = userCrud.RetrieveByCredentials(user);
-            if (user == null) 
+            try
             {
-                throw new Exception("User or password is not valid");
+                var encryptedUser = User.FromPlainText(username, password);
+                password = new HashedString(password).HashedValue;
+                if (!Session.OpenWith(encryptedUser, SessionFactory.CreateUserRetrieverByCredentials()))
+                {
+                    if (badLoginCount == badLoginThreshold)
+                    {
+                        throw new UserLoginAttemptsExhaustedException(badLoginThreshold);
+                    }
+                    badLoginCount++;
+                    throw new UserLoginBadAttemptException();
+                }
+                return Session.Current.User;
             }
-            
-            return user;
+            catch (BusinessException)
+            {
+                throw;
+            }
+            catch (Exception ex)
+            {
+                throw new UserLoginUnknownException(ex);
+            }
         }
 
         public User CreateUser(string username, string password) 
