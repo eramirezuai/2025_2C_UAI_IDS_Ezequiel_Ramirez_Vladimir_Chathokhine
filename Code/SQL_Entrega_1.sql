@@ -16,8 +16,8 @@
 
 
 
-USE [Australis]
-GO
+--USE [Australis]
+--GO
 
 
 
@@ -425,7 +425,32 @@ AS
 BEGIN
 	SELECT * FROM [USER]
 END
+GO
+
+CREATE PROCEDURE [DBO].USER_SELECT_FAMILIES
+@user_id BIGINT 
+AS
+BEGIN
+	SELECT fm.* FROM  family fm
+	inner join  user_family ufm on fm.id = ufm.family_id
+	WHERE ufm.[user_id] = @user_id
+END
+GO
+
+CREATE PROCEDURE [DBO].family_select_patents
+@family_id BIGINT 
+AS
+BEGIN
+	SELECT pat.* FROM  patent pat
+	inner join  family_patent fp on fp.patent_id = pat.id
+	WHERE fp.family_id = @family_id
+END
+GO
+
+
+--exec family_select_patents 1
 
 
 
- 
+
+
