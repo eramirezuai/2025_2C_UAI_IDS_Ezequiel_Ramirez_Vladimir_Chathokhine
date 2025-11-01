@@ -5,7 +5,7 @@ namespace Framework.Services.Security.Credentials
 {
     public class SinglePatent : Patent
     {
-        public int Id { get; set; }
+        public override long Id { get; set; }
 
         public override string Code { get; set; }
 
@@ -15,7 +15,7 @@ namespace Framework.Services.Security.Credentials
         {
         }
 
-        public SinglePatent(int id, string code, string description)
+        public SinglePatent(long id, string code, string description)
         {
             this.Id = id;
             this.Code = code;

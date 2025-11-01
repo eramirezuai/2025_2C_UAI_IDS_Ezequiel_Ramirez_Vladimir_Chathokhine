@@ -7,13 +7,13 @@ namespace Framework.Services.Security.Credentials
     {
         private List<IPatent> patents;
 
-        public int Id { get; set; }
+        public override long Id { get; set; }
 
         public override string Code { get; set; }
 
         public override string Description { get; set; }
 
-        public Family(int id, string code, string description, List<IPatent> patents)
+        public Family(long id, string code, string description, List<IPatent> patents)
         {
             this.Id = id;
             this.Code = code;
@@ -22,7 +22,7 @@ namespace Framework.Services.Security.Credentials
         }
         
         // For cloning purposes
-        private Family(int id, string code, string description)
+        private Family(long id, string code, string description)
         {
             this.patents = new List<IPatent>();
         }
