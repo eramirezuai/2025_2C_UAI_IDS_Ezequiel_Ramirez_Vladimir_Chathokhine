@@ -45,7 +45,7 @@ namespace GUI
         private void LoadUserWithPermissions()
         {
             User user = userBLL.GetUserWithPermissions(baseUser);
-            //usar el metodo foreach del patent para poblar el treeview
+            
 
             LoadPermissionsTree(user);
 

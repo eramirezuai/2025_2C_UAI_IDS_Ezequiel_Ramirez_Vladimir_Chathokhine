@@ -25,8 +25,8 @@ namespace BLL
         public UserBLL()
         {
             userCrud = new UserCrud(new Access(), new UserParameterMapper());
-            patentCrud = new PatentCrud(new Access(), new PatentParameterMapper());// TODO: crear clase PatentParameterMapper usar de base UserParameterMapper
-            familyCrud = new FamilyCrud(new Access(), new FamilyParameterMapper());// TODO: crear clase FamilyParameterMapper usar de base UserParameterMapper
+            patentCrud = new PatentCrud(new Access(), new PatentParameterMapper());
+            familyCrud = new FamilyCrud(new Access(), new FamilyParameterMapper());
             badLoginCount = 0;
             // TODO: make it configurable
             badLoginThreshold = 3;
