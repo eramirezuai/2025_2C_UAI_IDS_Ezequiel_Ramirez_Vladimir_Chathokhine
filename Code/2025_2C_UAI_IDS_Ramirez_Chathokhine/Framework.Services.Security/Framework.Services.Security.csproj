@@ -39,6 +39,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Credentials\Data\FamilyParameterMapper.cs" />
+    <Compile Include="Credentials\Data\PatentParameterMapper.cs" />
     <Compile Include="Credentials\IUserRetrieverByCredentials.cs" />
     <Compile Include="Credentials\SinglePatent.cs" />
     <Compile Include="Encryption\DES3DESEncrypter.cs" />

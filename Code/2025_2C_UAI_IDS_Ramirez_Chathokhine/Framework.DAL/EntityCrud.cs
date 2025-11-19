@@ -37,6 +37,10 @@ namespace Framework.DAL
                 }
                 access.Write(addSpName, sqlParameters);
             }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
             finally
             {
             }
@@ -63,6 +67,26 @@ namespace Framework.DAL
 
         public abstract IEnumerable<T> Retrieve();
 
+        protected IEnumerable<Dictionary<string, object>> RetrieveByDataTable(Dictionary<string, object> args, E type, string retrieveSpName)
+        {
+            if (string.IsNullOrEmpty(retrieveSpName))
+            {
+                throw new InvalidOperationException("No stored procedure name defined for retrieve operation");
+            }
+            try
+            {
+                var sqlParameters = new List<SqlParameter>();
+                foreach (var arg in args)
+                {
+                    sqlParameters.Add(access.CreateParameter(arg.Key, arg.Value));
+                }
+                var table = access.Read(retrieveSpName, sqlParameters);
+                return ParametersFromDataTable(table);
+            }
+            finally
+            {
+            }
+        }
         protected IEnumerable<T> Retrieve(Dictionary<string, object> args, E type, string retrieveSpName)
         {
             if (string.IsNullOrEmpty(retrieveSpName))
