@@ -27,7 +27,7 @@ namespace GUI
             try
             {
                 var user = userBLL.LoginWithCredentials(txt_user.Text, txt_password.Text);
-                MessageBox.Show("User " + user.Name + "logged in");
+                //MessageBox.Show("User " + user.Name + "logged in");
                 this.Close();
 
             }

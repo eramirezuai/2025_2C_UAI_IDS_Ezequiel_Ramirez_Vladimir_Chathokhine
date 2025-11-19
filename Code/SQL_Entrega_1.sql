@@ -192,8 +192,31 @@ CREATE TABLE [dbo].[audit](
 GO
 
 
+CREATE TABLE [dbo].family_family(
+	[parent_id] [bigint] NULL,
+	[child_id] [bigint] NULL
+) ON [PRIMARY]
+GO
+
+ALTER TABLE [dbo].family_family  WITH CHECK ADD  CONSTRAINT [FK_family_family_family_parent] FOREIGN KEY([parent_id])
+REFERENCES [dbo].[family] ([id])
+GO
+
+ALTER TABLE [dbo].family_family CHECK CONSTRAINT [FK_family_family_family_parent]
+GO
+
+ALTER TABLE [dbo].family_family  WITH CHECK ADD  CONSTRAINT [FK_family_family_family_child] FOREIGN KEY([child_id])
+REFERENCES [dbo].[family] ([id])
+GO
+
+ALTER TABLE [dbo].family_family CHECK CONSTRAINT [FK_family_family_family_child]
+GO
+
+
+
 --********************************************************procedures
 
+--Composite and user section
 CREATE PROCEDURE [dbo].[user_family_insert]
     @user_id   BIGINT,
     @family_id BIGINT
@@ -434,6 +457,12 @@ BEGIN
 	SELECT fm.* FROM  family fm
 	inner join  user_family ufm on fm.id = ufm.family_id
 	WHERE ufm.[user_id] = @user_id
+	--UNION
+	--SELECT ff.parent_id, fm.* FROM  family fm
+	--inner join family_family ff ON fm.id = ff.child_id
+	--WHERE ff.parent_id in (SELECT fm.id FROM  family fm
+	--inner join  user_family ufm ON fm.id = ufm.family_id
+	--WHERE ufm.[user_id] = @user_id)
 END
 GO
 
@@ -448,9 +477,14 @@ END
 GO
 
 
---exec family_select_patents 1
-
-
-
-
+CREATE PROCEDURE [DBO].family_select_families
+@family_id BIGINT 
+AS
+BEGIN
+	--este procedure trae la siguiente capa de familias de una familia
+	SELECT f.* FROM  family f
+	inner join family_family ff on ff.child_id=f.id
+	WHERE ff.parent_id= @family_id
+END
+GO
 

@@ -7,13 +7,13 @@ namespace Framework.Services.Security.Credentials
     {
         private List<IPatent> patents;
 
-        public int Id { get; set; }
+        public long Id { get; set; }
 
         public override string Code { get; set; }
 
         public override string Description { get; set; }
 
-        public Family(int id, string code, string description, List<IPatent> patents)
+        public Family(long id, string code, string description, List<IPatent> patents)
         {
             this.Id = id;
             this.Code = code;
@@ -22,9 +22,12 @@ namespace Framework.Services.Security.Credentials
         }
         
         // For cloning purposes
-        private Family(int id, string code, string description)
+        public Family(long id, string code, string description)
         {
             this.patents = new List<IPatent>();
+            this.Id = id;
+            this.Code = code;
+            this.Description = description;
         }
        
         public override IPatent Clone()
@@ -52,6 +55,11 @@ namespace Framework.Services.Security.Credentials
             this.patents.Add(patent);
         }
 
+        public void AddPatents(IEnumerable<IPatent> patents)
+        {
+            this.patents.AddRange(patents);
+        }
+
         public void RemovePatent(IPatent patent)
         {
             this.patents.Remove(patent);
@@ -70,20 +78,9 @@ namespace Framework.Services.Security.Credentials
                 ForEach(handler, this);
             }
         }
+        
 
-        public override IEnumerable<IPatent> ChildPatents
-        {
-            get
-            {
-                yield return this;
-                foreach(var patent in patents)
-                {
-                    foreach (var p in patent.ChildPatents)
-                    {
-                        yield return p;
-                    }
-                }
-            }
-        }
+        public override IEnumerable<IPatent> ChildPatents => this.patents;
+
     }
 }

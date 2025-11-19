@@ -40,7 +40,7 @@ namespace GUI
 
         private void userManagementToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            formUserManagement frm = new formUserManagement();
+            FormUserManagement frm = new FormUserManagement();
             frm.ShowDialog();
         }
     }

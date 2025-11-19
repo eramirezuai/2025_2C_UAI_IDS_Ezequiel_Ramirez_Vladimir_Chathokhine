@@ -24,8 +24,9 @@ namespace Framework.Services.Security.Credentials
             {
                 case UserParameterMappings.Create:
                 case UserParameterMappings.Update:
-                case UserParameterMappings.Delete:
                     return MapToParametersGeneric(data, type);
+                case UserParameterMappings.Delete:
+                    return MapToParametersDelete(data, type);
                 default:
                     throw new ArgumentException("type");
             }
@@ -44,9 +45,17 @@ namespace Framework.Services.Security.Credentials
         {
             var ret = new Dictionary<string, object>
             {
-                { "id", data.Id },
-                { "name", data.Name },
-                { "password", data.Password }
+                { "@name", data.Name },
+                { "@password", data.Password }
+            };
+            return ret;
+        }
+
+        private Dictionary<string, object> MapToParametersDelete(User data, UserParameterMappings type)
+        {
+            var ret = new Dictionary<string, object>
+            {
+                { "@id", data.Id },
             };
             return ret;
         }

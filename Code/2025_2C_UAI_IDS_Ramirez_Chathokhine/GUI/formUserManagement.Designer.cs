@@ -1,6 +1,6 @@
 ﻿namespace GUI
 {
-    partial class formUserManagement
+    partial class FormUserManagement
     {
         /// <summary>
         /// Required designer variable.
@@ -38,6 +38,7 @@
             this.btnDelete = new System.Windows.Forms.Button();
             this.btnClose = new System.Windows.Forms.Button();
             this.grdUsers = new System.Windows.Forms.DataGridView();
+            this.btnPermissions = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.grdUsers)).BeginInit();
             this.SuspendLayout();
             // 
@@ -108,10 +109,11 @@
             this.btnDelete.TabIndex = 7;
             this.btnDelete.Text = "Delete";
             this.btnDelete.UseVisualStyleBackColor = true;
+            this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
             // 
             // btnClose
             // 
-            this.btnClose.Location = new System.Drawing.Point(757, 422);
+            this.btnClose.Location = new System.Drawing.Point(681, 461);
             this.btnClose.Name = "btnClose";
             this.btnClose.Size = new System.Drawing.Size(78, 33);
             this.btnClose.TabIndex = 8;
@@ -126,15 +128,26 @@
             this.grdUsers.Name = "grdUsers";
             this.grdUsers.RowHeadersWidth = 62;
             this.grdUsers.RowTemplate.Height = 28;
-            this.grdUsers.Size = new System.Drawing.Size(240, 150);
+            this.grdUsers.Size = new System.Drawing.Size(743, 297);
             this.grdUsers.TabIndex = 9;
             // 
-            // formUserManagement
+            // btnPermissions
+            // 
+            this.btnPermissions.Location = new System.Drawing.Point(180, 106);
+            this.btnPermissions.Name = "btnPermissions";
+            this.btnPermissions.Size = new System.Drawing.Size(143, 33);
+            this.btnPermissions.TabIndex = 10;
+            this.btnPermissions.Text = "See Permissions";
+            this.btnPermissions.UseVisualStyleBackColor = true;
+            this.btnPermissions.Click += new System.EventHandler(this.btnPermissions_Click);
+            // 
+            // FormUserManagement
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ControlDark;
-            this.ClientSize = new System.Drawing.Size(847, 467);
+            this.ClientSize = new System.Drawing.Size(768, 498);
+            this.Controls.Add(this.btnPermissions);
             this.Controls.Add(this.grdUsers);
             this.Controls.Add(this.btnClose);
             this.Controls.Add(this.btnDelete);
@@ -145,7 +158,7 @@
             this.Controls.Add(this.lblPassword);
             this.Controls.Add(this.txtUser);
             this.Controls.Add(this.lblUser);
-            this.Name = "formUserManagement";
+            this.Name = "FormUserManagement";
             this.Text = "formUserManagement";
             this.Load += new System.EventHandler(this.formUserManagement_Load);
             ((System.ComponentModel.ISupportInitialize)(this.grdUsers)).EndInit();
@@ -166,5 +179,6 @@
         private System.Windows.Forms.Button btnDelete;
         private System.Windows.Forms.Button btnClose;
         private System.Windows.Forms.DataGridView grdUsers;
+        private System.Windows.Forms.Button btnPermissions;
     }
 }

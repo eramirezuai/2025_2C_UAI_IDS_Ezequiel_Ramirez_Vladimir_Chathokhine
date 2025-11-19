@@ -101,6 +101,15 @@ namespace Framework.DAL
             {
                 return CreateParameter(name, (decimal)value);
             }
+            else if (value is long)
+            {
+                return CreateParameter(name, (long)value);
+            }
+            else if (value is DateTime)
+            {
+                return CreateParameter(name, (DateTime)value);
+            }
+
             else { throw new NotSupportedException("Data type not implemented in Access"); }
         }
 
@@ -123,6 +132,13 @@ namespace Framework.DAL
         {
             SqlParameter parameter = new SqlParameter(name, value);
             parameter.DbType = DbType.Decimal;
+            return parameter;
+        }
+
+        public SqlParameter CreateParameter(string name, DateTime value)
+        {
+            SqlParameter parameter = new SqlParameter(name, value);
+            parameter.DbType = DbType.DateTime;
             return parameter;
         }
 
