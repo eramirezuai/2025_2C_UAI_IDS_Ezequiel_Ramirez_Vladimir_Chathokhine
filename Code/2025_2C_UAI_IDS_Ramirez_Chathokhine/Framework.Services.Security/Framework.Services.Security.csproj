@@ -59,6 +59,10 @@
     <Compile Include="Credentials\IPatent.cs" />
     <Compile Include="Credentials\Patent.cs" />
     <Compile Include="Credentials\User.cs" />
+    <Compile Include="Session\Session.cs" />
+    <Compile Include="Session\SessionFactory.cs" />
+    <Compile Include="Session\SessionFactoryLoader.cs" />
+    <Compile Include="Session\SessionManager.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Framework.DAL\Framework.DAL.csproj">
