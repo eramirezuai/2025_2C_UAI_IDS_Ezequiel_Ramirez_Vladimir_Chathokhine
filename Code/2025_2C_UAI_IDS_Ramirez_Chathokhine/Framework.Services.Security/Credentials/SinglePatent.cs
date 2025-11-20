@@ -5,7 +5,7 @@ namespace Framework.Services.Security.Credentials
 {
     public class SinglePatent : Patent
     {
-        public long Id { get; set; }
+        public override long Id { get; set; }
 
         public override string Code { get; set; }
 

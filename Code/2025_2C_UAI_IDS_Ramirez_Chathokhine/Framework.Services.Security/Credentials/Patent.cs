@@ -5,6 +5,7 @@ namespace Framework.Services.Security.Credentials
 {
     public abstract class Patent : IPatent
     {
+        public abstract long Id { get; set; }
         public abstract string Code { get; set;  }
         public abstract string Description { get; set; }
 

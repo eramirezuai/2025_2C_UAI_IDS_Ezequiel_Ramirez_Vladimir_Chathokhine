@@ -5,7 +5,7 @@ namespace Framework.Services.Security
 {
     public class SessionFactoryLoader
     {
-        internal static void LoadClasses()
+        public static void LoadClasses()
         {
             SessionFactory.ConfigureType<IUser>(() => new User());
             SessionFactory.ConfigureType<IUserRetrieverByCredentials>(() => new UserCrud(new Access(), new UserParameterMapper()));

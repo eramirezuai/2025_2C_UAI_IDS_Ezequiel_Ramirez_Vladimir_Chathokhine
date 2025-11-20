@@ -4,6 +4,7 @@ using Framework.Services.Security;
 using Framework.Services.Security.Credentials;
 using Framework.Services.Security.Credentials.Data;
 using Framework.Services.Security.Encryption;
+using Framework.Services.Security.Log;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -21,12 +22,27 @@ namespace BLL
         private FamilyCrud familyCrud;
         private int badLoginCount;
         private int badLoginThreshold;
+        private IDataLog dataLog;
 
         public UserBLL()
         {
             userCrud = new UserCrud(new Access(), new UserParameterMapper());
             patentCrud = new PatentCrud(new Access(), new PatentParameterMapper());
             familyCrud = new FamilyCrud(new Access(), new FamilyParameterMapper());
+            // TODO: replace with injection 
+            dataLog = new DataLog
+            (
+                new DatabaseLogReader
+                (
+                    new DataLogLoginCrud(new Access(), new DataLogLoginParameterMapper()),
+                    new DataLogDatabaseCrud(new Access(), new DataLogDatabaseParameterMapper())
+                ), 
+                new DatabaseLogWriter
+                (
+                    new DataLogLoginCrud(new Access(), new DataLogLoginParameterMapper()),
+                    new DataLogDatabaseCrud(new Access(), new DataLogDatabaseParameterMapper())
+                )
+            );
             badLoginCount = 0;
             // TODO: make it configurable
             badLoginThreshold = 3;

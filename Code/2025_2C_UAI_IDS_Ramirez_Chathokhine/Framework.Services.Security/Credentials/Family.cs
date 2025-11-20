@@ -7,7 +7,7 @@ namespace Framework.Services.Security.Credentials
     {
         private List<IPatent> patents;
 
-        public long Id { get; set; }
+        public override long Id { get; set; }
 
         public override string Code { get; set; }
 
