@@ -21,32 +21,32 @@ namespace Framework.Services.Security.Credentials
 
         public override void Create(User data)
         {
-            base.Create(data, UserParameterMappings.Create, "sp_user_insert");
+            base.Create(data, UserParameterMappings.Create, "user_insert");
         }
 
         public override void Delete(User data)
         {
-            base.Delete(data, UserParameterMappings.Delete, "sp_user_delete");
+            base.Delete(data, UserParameterMappings.Delete, "user_delete");
         }
 
         public override void Delete(User data, Dictionary<string, object> args)
         {
-            base.Delete(data, UserParameterMappings.Delete, "sp_user_delete");
+            base.Delete(data, UserParameterMappings.Delete, "user_delete");
         }
 
         public override IEnumerable<User> Retrieve()
         {
-            return base.Retrieve(UserParameterMappings.Retrieve, "sp_user_select_all");
+            return base.Retrieve(UserParameterMappings.Retrieve, "user_select_all");
         }
 
         public override IEnumerable<User> Retrieve(Dictionary<string, object> args)
         {
-            return base.Retrieve(UserParameterMappings.Retrieve, "sp_user_select_all");
+            return base.Retrieve(UserParameterMappings.Retrieve, "user_select_all");
         }
 
         public override void Update(User data)
         {
-            base.Update(data, UserParameterMappings.Update, "sp_user_update");
+            base.Update(data, UserParameterMappings.Update, "user_update");
         }
 
         public User RetrieveByCredentials(User user)
@@ -61,7 +61,7 @@ namespace Framework.Services.Security.Credentials
                 {"@name",user},
                 {"@password",password}
             };
-            return base.Retrieve(parameters, UserParameterMappings.RetrieveByCredentials, "sp_user_select_by_credentials").FirstOrDefault();
+            return base.Retrieve(parameters, UserParameterMappings.RetrieveByCredentials, "user_select_by_credentials").FirstOrDefault();
         }
 
         IUser IUserRetrieverByCredentials.RetrieveByCredentials(string user, string password)

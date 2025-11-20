@@ -58,11 +58,17 @@
     <Compile Include="FormMain.Designer.cs">
       <DependentUpon>FormMain.cs</DependentUpon>
     </Compile>
-    <Compile Include="formUserManagement.cs">
+    <Compile Include="FormUserManagement.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="formUserManagement.Designer.cs">
-      <DependentUpon>formUserManagement.cs</DependentUpon>
+    <Compile Include="FormUserManagement.Designer.cs">
+      <DependentUpon>FormUserManagement.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormUserPermissions.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormUserPermissions.Designer.cs">
+      <DependentUpon>FormUserPermissions.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -72,8 +78,11 @@
     <EmbeddedResource Include="FormMain.resx">
       <DependentUpon>FormMain.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="formUserManagement.resx">
-      <DependentUpon>formUserManagement.cs</DependentUpon>
+    <EmbeddedResource Include="FormUserManagement.resx">
+      <DependentUpon>FormUserManagement.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormUserPermissions.resx">
+      <DependentUpon>FormUserPermissions.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
