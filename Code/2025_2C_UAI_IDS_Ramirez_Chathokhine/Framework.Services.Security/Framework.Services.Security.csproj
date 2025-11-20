@@ -57,18 +57,16 @@
     <Compile Include="Log\DataLogEntry.cs" />
     <Compile Include="Log\DataLogLoginEntry.cs" />
     <Compile Include="Log\DataLogLoginOperation.cs" />
-    <Compile Include="Log\Data\DataLogDatabaseCrud.cs" />
-    <Compile Include="Log\Data\DataLogDatabaseParameterMapper.cs" />
     <Compile Include="Log\Data\DataLogLoginCrud.cs" />
+    <Compile Include="Log\Data\DataLogDatabaseCrud.cs" />
     <Compile Include="Log\Data\DataLogLoginParameterMapper.cs" />
+    <Compile Include="Log\Data\DataLogDatabaseParameterMapper.cs" />
     <Compile Include="Log\IDataLog.cs" />
+    <Compile Include="Log\ILogReader.cs" />
     <Compile Include="Log\IDataLogDatabaseEntry.cs" />
     <Compile Include="Log\IDataLogEntry.cs" />
     <Compile Include="Log\IDataLogLoginEntry.cs" />
-    <Compile Include="Log\ILogReader.cs" />
     <Compile Include="Log\ILogWriter.cs" />
-    <Compile Include="Log\LogFactory.cs" />
-    <Compile Include="Log\LogFactoryLoader.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Credentials\Data\FamilyCrud.cs" />
     <Compile Include="Credentials\Data\PatentCrud.cs" />
@@ -88,10 +86,6 @@
     <ProjectReference Include="..\Framework.DAL\Framework.DAL.csproj">
       <Project>{2d6ce7a8-fbf5-415d-a218-61ed0ee3f282}</Project>
       <Name>Framework.DAL</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Framework.Interfaces\Framework.Interfaces.csproj">
-      <Project>{596EC40A-5802-446C-A2AD-D07AAF4A1B17}</Project>
-      <Name>Framework.Interfaces</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup />

@@ -476,7 +476,43 @@ BEGIN
 END
 GO
 
+CREATE PROCEDURE [dbo].[log_database_insert]
+    @date datetime,
+    @user_id bigint,
+	@operation int,
+	@patent_id 	bigint
+AS
+BEGIN
+    SET NOCOUNT ON;
 
+    INSERT INTO [dbo].[log_database] ([date], [user_id], [operation], [patent_id])
+    VALUES (@date, @user_id, @operation, @patent_id);
+
+    -- devolver el id generado
+    SELECT SCOPE_IDENTITY() AS NewUserId;
+END
+GO
+
+CREATE PROCEDURE [dbo].log_database_select_all
+AS
+BEGIN
+	SELECT * FROM [dbo].[log_database]
+END
+GO
+
+CREATE PROCEDURE [dbo].log_database_by_filters
+	
+AS
+BEGIN
+	SELECT * FROM [dbo].[log_database]
+	WHERE 
+		(@date_from IS NULL OR @date_from >= [date]) AND
+		(@date_to IS NULL OR @date_to <= [date]) AND
+		(@user_id IS NULL OR @user_id = [user_id]) AND
+END
+GO
+
+<<<<<<< Updated upstream
 CREATE PROCEDURE [DBO].family_select_families
 @family_id BIGINT 
 AS
@@ -488,3 +524,8 @@ BEGIN
 END
 GO
 
+=======
+--exec family_select_patents 1
+
+	
+>>>>>>> Stashed changes
